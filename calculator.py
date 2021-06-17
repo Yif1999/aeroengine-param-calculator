@@ -21,6 +21,8 @@
 # 输出计算结果字典（采用国际标准单位）
 
 from math import *
+from warnings import simplefilter
+simplefilter('error')
 
 def calc(input):
   T_0   =input['T_0']
@@ -52,7 +54,10 @@ def calc(input):
   S=f/((1+alpha)*F_unit)
   eta_t=1-1/(tau_gama*tau_c)
   u_0=Ma_0*a_0
-  eta_p=2*(alpha*(u_19/u_0-1)+(u_9/u_0)-1)/(alpha*(u_19**2/u_0**2-1)+(u_9**2/u_0**2-1))
+  try:
+    eta_p=2*(alpha*(u_19/u_0-1)+(u_9/u_0)-1)/(alpha*(u_19**2/u_0**2-1)+(u_9**2/u_0**2-1))
+  except RuntimeWarning:
+    return 0
   eta_0=eta_p*eta_t
 
   output={'F_unit':F_unit,'S':S,'eta_t':eta_t,'eta_p':eta_p,'eta_0':eta_0,'u_9':u_9,'u_19':u_19,'T_9':T_9,'T_19':T_19,'f':f}
