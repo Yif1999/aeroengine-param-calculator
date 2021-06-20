@@ -64,5 +64,5 @@ def calc(input):
   return output
 
 if __name__=="__main__":
-  input={'T_0':217,'Ma_0':0.9,'h_c':42800000,'T_t4':1670,'pi_c':2,'pi_f':4,'alpha':1,'gama':1.4,'C_p':1004}
+  input={'T_0':227.15,'Ma_0':0.84,'h_c':42800000,'T_t4':1775,'pi_c':42,'pi_f':2,'alpha':9,'gama':1.4,'C_p':1004}
   print('\n'.join(list(map(str,calc(input).items()))))
